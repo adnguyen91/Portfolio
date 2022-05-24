@@ -40,7 +40,6 @@ order by 1,2
 
 Select Location, population, max(total_cases) as HighestInfectionCount, max((total_cases/population))*100 as PercentPopulationInfected
 From PortfolioProject..CovidDeaths
---Where location = 'vietnam'
 Group by Location, population
 order by PercentPopulationInfected desc
 
@@ -50,7 +49,6 @@ order by PercentPopulationInfected desc
 
 Select Location, MAX(cast(Total_Deaths as int)) as TotalDeathCount
 From PortfolioProject..CovidDeaths
---Where location = 'vietnam'
 Where continent is not null
 Group by Location
 order by TotalDeathCount desc
@@ -61,7 +59,6 @@ order by TotalDeathCount desc
 
 Select continent, MAX(cast(Total_Deaths as int)) as TotalDeathCount
 From PortfolioProject..CovidDeaths
---Where location = 'vietnam'
 Where continent is not null
 Group by continent
 order by TotalDeathCount desc
@@ -72,9 +69,7 @@ order by TotalDeathCount desc
 
 Select SUM(new_cases) as total_cases, SUM(cast(new_deaths as int)) as total_deaths, SUM(cast(new_deaths as int))/SUM(new_cases)*100 as DeathPercentage--total_cases, total_deaths, (total_deaths/total_cases)*100 as DeathPercentage
 From PortfolioProject..CovidDeaths
---Where location = 'vietnam'
 Where continent is not null
---Group by date
 order by 1,2
 
 
@@ -102,7 +97,6 @@ Join PortfolioProject..CovidVaccinations vac
 	On dea.location = vac.location
 	and dea.date = vac.date
 Where dea.continent is not null
---order by 2,3
 )
 Select * , (RollingPeopleVaccinated/Population) *100
 From PopvsVac 
@@ -129,7 +123,7 @@ Join PortfolioProject..CovidVaccinations vac
 	On dea.location = vac.location
 	and dea.date = vac.date
 Where dea.continent is not null
---order by 2,3
+
 
 
 Select * , (RollingPeopleVaccinated/Population) *100
@@ -146,7 +140,7 @@ Join PortfolioProject..CovidVaccinations vac
 	On dea.location = vac.location
 	and dea.date = vac.date
 Where dea.continent is not null
---order by 2,3
+
 
 
 Select * 

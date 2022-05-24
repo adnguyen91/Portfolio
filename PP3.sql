@@ -11,14 +11,14 @@ From PortfolioProject.dbo.NashvilleHousing
 
 --Standardizing Date Format
 
---Method #1
+--Method #1 (Overwriting SaleDate)
 Select SaleDate, CONVERT(Date, SaleDate)
 From PortfolioProject.dbo.NashvilleHousing 
 
 Update NashvilleHousing
 SET SaleDate = CONVERT(Date, SaleDate)
 
---Method #2
+--Method #2 (Creating a new column named SaleDateConverted)
 Select SaleDateConverted, CONVERT(Date, SaleDate)
 From PortfolioProject.dbo.NashvilleHousing 
 

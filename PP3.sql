@@ -34,7 +34,6 @@ SET SaleDateConverted = CONVERT(Date, SaleDate)
 
 Select *
 From PortfolioProject.dbo.NashvilleHousing
---Where PropertyAddress is null
 Order by ParcelID
 
 
@@ -60,8 +59,6 @@ Where a.PropertyAddress is null
 
 Select PropertyAddress
 From PortfolioProject.dbo.NashvilleHousing
---Where PropertyAddress is null
---Order by ParcelID
 
 Select
 SUBSTRING(PropertyAddress, 1, CHARINDEX(',', PropertyAddress) - 1) as Address
@@ -163,7 +160,6 @@ Select *,
 					) row_num
 
 From PortfolioProject.dbo.NashvilleHousing
---ORDER BY ParcelID
 )
 Select *
 From RowNumCTE
